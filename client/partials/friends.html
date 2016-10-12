@@ -1,0 +1,25 @@
+<h3>FRIENDS LIST</h3>
+<div>
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Show</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends">
+				<td>{{friend.first_name}}  {{friend.last_name}}</td>
+				<td><a ng-href="#/show/{{friend._id}}">show</a></td>
+				<td><a ng-href="#/edit/{{friend._id}}">edit</a></td>
+				<td><a ng-click="delete(friend._id)">delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<input type="text" ng-model="friendFilter" placeholder="filter...">
+	<ul ng-repeat="friend in friends | filter:friendFilter">
+		<li>{{friend.first_name}} {{friend.last_name}} {{friend.birthday | date: 'MM/dd/yyyy'}}</li>
+	</ul>
+	<a ng-href="#/new"><button>New</button></a>
+</div>
